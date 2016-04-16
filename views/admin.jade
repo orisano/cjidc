@@ -1,0 +1,21 @@
+doctype html
+html
+	head
+		meta(charset="utf-8")
+		title CJIDC - ADMIN
+		link(rel="stylesheet" href="/stylesheets/style.css")
+	body
+		main
+			h1 CJIDC Realtime - Admin
+			section
+				h3 Add Score data
+				form(action="/score", method="post")
+					input(type="text", placeholder="grade")
+					input(type="text", placeholder="class")
+					select
+						each kind in kinds
+							option(value=kind) 競技 #{kind}
+					input(type="text", placeholder="score")
+					input(type="submit", value="submit")
+		footer
+			p &copy; 2016 CJIDC

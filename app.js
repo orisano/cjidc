@@ -1,7 +1,9 @@
 "use strict";
 
-const express = require("express")();
+const express = require("express");
 const app = express();
+app.use(express.static("public"));
+
 const server = require("http").Server(app);
 const io = require("socket.io")(server);
 const passport = require("passport");
@@ -12,7 +14,7 @@ const bodyParser = require("body-parser");
 const sqlite3 = require("sqlite3").verbose();
 
 const cnf = require("./config");
-const db = new sqlite3.Database(cnf.db);
+// const db = new sqlite3.Database(cnf.db);
 
 server.listen(cnf.port);
 
@@ -27,16 +29,17 @@ const csrfProtection = csrf({ cookie: true });
 const parseForm = bodyParser.urlencoded({ extended: false });
 
 app.use(cookieParser());
+app.set("view engine", "jade");
 
 app.get("/", (req,res) => {
-    res.sendFile(__dirname + "/index.html");
+    res.render("index");
 });
 
 app.get("/admin",
     passport.authenticate("basic", {session: false}),
     csrfProtection,
     (req, res) => {
-        res.sendFile(__dirname + "/admin.html");
+        res.render("admin", {kinds: ["A", "B", "C"]});
     }
 );
 
