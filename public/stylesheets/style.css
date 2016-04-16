@@ -1,0 +1,88 @@
+@charset "utf-8";
+/* common */
+* {
+	color: #555;
+	margin: 0;
+	padding: 0;
+	font-family: メイリオ;
+	font-size: 11pt;
+	font-weight: normal;
+}
+html {
+	background: #EFEFEF;
+}
+body{
+	background: #FFF;
+	box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.1);
+	width: 80%;
+	margin: 0 auto;
+}
+main, footer {
+	padding: 1em;
+}
+main {
+	border-top: 5px solid #1AD96F;
+}
+
+	h1 {
+		color: #666;
+		font-size: 20pt;
+		border-bottom: 1px solid #DDD;
+	}
+	section {
+		margin-bottom: 1.5em;
+	}
+		h3 {
+			font-size: 13pt;
+		}
+		h3:first-letter {
+			font-size: 150%;
+		}
+		table {
+			border-collapse: separate;
+			width: 90%;
+			margin: 0 auto;
+		}
+				table tr td {
+					text-align: center;
+					padding: 0.5em;
+					box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.12);
+				}
+				table tr:first-child td {
+					color: #FFF;
+					background: #1AD96F;
+				}
+		form {
+			width: 90%;
+			margin: 0 auto;
+		}
+			form * {
+				width: 500px;
+				margin: 1em 0;
+				padding: 0.5em;
+				border: 1px solid #CCC;
+				border-radius: 3px;
+				display: block;
+				vertical-align: middle;
+			}
+			form input[type="submit"] {
+				color: #FFF;
+				background: #1AD96F;
+				cursor: pointer;
+				border: 3px solid transparent;
+				transition: .3s;
+			}
+			form input[type="submit"]:hover {
+				border-color: #1AD96F;
+				color: #1AD96F;
+				background: #FFF;
+			}
+footer {
+	width: 80%;
+	margin: 0 auto;
+	border-top: 1px solid #CCC;
+}
+	footer p {
+		font-size: 11pt;
+		text-align: center;
+	}
