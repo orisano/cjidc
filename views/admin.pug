@@ -11,12 +11,13 @@ html
 				h3 Add Score data
 				form(action="/score", method="post")
 					input(type="hidden" name="_csrf" value=csrfToken)
-					input(type="text", placeholder="grade")
-					input(type="text", placeholder="class")
-					select
+					input(type="text", placeholder="grade" name="grade")
+					input(type="text", placeholder="class" name="class")
+					input(type="datetime-local" name="time")
+					select(name="kind")
 						each kind in kinds
 							option(value=kind) 競技 #{kind}
-					input(type="text", placeholder="score")
+					input(type="text", placeholder="point" name="point")
 					input(type="submit", value="submit")
 		footer
 			p &copy; 2016 CJIDC

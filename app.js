@@ -10,10 +10,8 @@ const cookieParser = require("cookie-parser");
 const csrf = require("csurf");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
-const sqlite3 = require("sqlite3").verbose();
-
+const models = require("./models");
 const cnf = require("./config");
-// const db = new sqlite3.Database(cnf.db);
 
 server.listen(cnf.port);
 
@@ -24,8 +22,8 @@ passport.use(new Strategy((user, pass, done) => {
     done(null, true);
 }));
 
-const csrfProtection = csrf({ cookie: true });
-const parseForm = bodyParser.urlencoded({ extended: false });
+const csrfProtection = csrf({cookie: true});
+const parseForm = bodyParser.urlencoded({extended: false});
 
 app.use(logger("dev"));
 app.use(express.static("public"));
@@ -49,9 +47,21 @@ app.post("/score",
     parseForm,
     csrfProtection,
     (req, res) => {
-        res.send("OK");
+        models.Event.create({
+            time: req.body.time,
+            grade: +req.body.grade,
+            class: req.body.class,
+            kind: req.body.kind,
+            point: +req.body.point
+        }).then(() => {
+            res.send("OK");
+        });
     }
 );
+
+app.get("/event", (req, res) => {
+    models.Event.findAll().then(events => res.json({events}));
+});
 
 io.on("connection", (socket) => {
 
