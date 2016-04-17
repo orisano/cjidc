@@ -27,6 +27,7 @@ passport.use(new Strategy((user, pass, done) => {
 const csrfProtection = csrf({ cookie: true });
 const parseForm = bodyParser.urlencoded({ extended: false });
 
+app.use(logger("dev"));
 app.use(express.static("public"));
 app.use(cookieParser());
 app.set("view engine", "pug");
@@ -39,13 +40,18 @@ app.get("/admin",
     passport.authenticate("basic", {session: false}),
     csrfProtection,
     (req, res) => {
-        res.render("admin", {kinds: ["A", "B", "C"]});
+        res.render("admin", {kinds: ["A", "B", "C"], csrfToken: req.csrfToken()});
     }
 );
 
-app.post("/score", parseForm, csrfProtection, (req, res) => {
-    
-});
+app.post("/score",
+    passport.authenticate("basic", {session: false}),
+    parseForm,
+    csrfProtection,
+    (req, res) => {
+        res.send("OK");
+    }
+);
 
 io.on("connection", (socket) => {
 

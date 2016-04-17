@@ -10,6 +10,7 @@ html
 			section
 				h3 Add Score data
 				form(action="/score", method="post")
+					input(type="hidden" name="_csrf" value=csrfToken)
 					input(type="text", placeholder="grade")
 					input(type="text", placeholder="class")
 					select
