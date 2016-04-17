@@ -2,8 +2,6 @@
 
 const express = require("express");
 const app = express();
-app.use(express.static("public"));
-
 const server = require("http").Server(app);
 const io = require("socket.io")(server);
 const passport = require("passport");
@@ -11,6 +9,7 @@ const Strategy = require("passport-http").BasicStrategy;
 const cookieParser = require("cookie-parser");
 const csrf = require("csurf");
 const bodyParser = require("body-parser");
+const logger = require("morgan");
 const sqlite3 = require("sqlite3").verbose();
 
 const cnf = require("./config");
@@ -28,8 +27,9 @@ passport.use(new Strategy((user, pass, done) => {
 const csrfProtection = csrf({ cookie: true });
 const parseForm = bodyParser.urlencoded({ extended: false });
 
+app.use(express.static("public"));
 app.use(cookieParser());
-app.set("view engine", "jade");
+app.set("view engine", "pug");
 
 app.get("/", (req,res) => {
     res.render("index");
