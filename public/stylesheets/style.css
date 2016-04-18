@@ -43,12 +43,12 @@ main {
 			width: 90%;
 			margin: 0 auto;
 		}
-				table tr td {
+				table tr td, table tr th {
 					text-align: center;
 					padding: 0.5em;
 					box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.12);
 				}
-				table tr:first-child td {
+				table thead th {
 					color: #FFF;
 					background: #1AD96F;
 				}
