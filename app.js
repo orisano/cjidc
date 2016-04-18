@@ -47,14 +47,16 @@ app.post("/score",
     parseForm,
     csrfProtection,
     (req, res) => {
-        models.Event.create({
+        const event = {
             time: req.body.time,
             grade: +req.body.grade,
             class: req.body.class,
             kind: req.body.kind,
             point: +req.body.point
-        }).then(() => {
+        };
+        models.Event.create(event).then(() => {
             res.send("OK");
+            io.emit("event", event);
         });
     }
 );

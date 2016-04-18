@@ -1,43 +1,43 @@
-doctype html
-html
-    head
-        meta(charset="utf-8")
-        title CIJDC - INDEX
-        link(rel="stylesheet", href="/stylesheets/style.css")
-    body
-        main
-            h1 CJIDC Realtime
-            section
-                h3 Ranking
-                table
-                    thead
-                        tr
-                            th rank
-                            th grade
-                            th class
-                            th point
-                    tbody
-                        tr
-                            td 1
-                            td 1
-                            td 1
-                            td 100
-            section
-                h3 Event Log
-                table
-                    thead
-                        tr
-                            th time
-                            th grade
-                            th class
-                            th kind
-                            th point
-                    tbody
-                        tr
-                            td 10:05
-                            td 1
-                            td 1
-                            td 400-meter relay
-                            td +100
-        footer
-            p &copy; 2016 CJIDC
+extends ./layout.pug
+
+block title
+    title CJIDC - INDEX
+
+append scripts
+    script(src="/socket.io/socket.io.js")
+    script(src="/js/index.js")
+
+block main
+    h1 CJIDC Realtime
+    section
+        h3 Ranking
+        table
+            thead
+                tr
+                    th rank
+                    th grade
+                    th class
+                    th point
+            tbody
+                tr
+                    td 1
+                    td 1
+                    td 1
+                    td 100
+    section
+        h3 Event Log
+        table
+            thead
+                tr
+                    th time
+                    th grade
+                    th class
+                    th kind
+                    th point
+            tbody
+                tr
+                    td 10:05
+                    td 1
+                    td 1
+                    td 400-meter relay
+                    td +100

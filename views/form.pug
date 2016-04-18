@@ -1,0 +1,4 @@
+mixin CsrfForm(endpoint)
+    form(action=endpoint method="post")
+        input(type="hidden" name="_csrf" value=csrfToken)
+        block

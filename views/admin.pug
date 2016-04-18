@@ -1,23 +1,23 @@
-doctype html
-html
-	head
-		meta(charset="utf-8")
-		title CJIDC - ADMIN
-		link(rel="stylesheet" href="/stylesheets/style.css")
-	body
-		main
-			h1 CJIDC Realtime - Admin
-			section
-				h3 Add Score data
-				form(action="/score", method="post")
-					input(type="hidden" name="_csrf" value=csrfToken)
-					input(type="text", placeholder="grade" name="grade")
-					input(type="text", placeholder="class" name="class")
-					input(type="datetime-local" name="time")
-					select(name="kind")
-						each kind in kinds
-							option(value=kind) 競技 #{kind}
-					input(type="text", placeholder="point" name="point")
-					input(type="submit", value="submit")
-		footer
-			p &copy; 2016 CJIDC
+extends ./layout.pug
+
+mixin CsrfForm(endpoint)
+    form(action=endpoint method="post")
+        input(type="hidden" name="_csrf" value=csrfToken)
+        block
+
+block title
+    title CJIDC - ADMIN
+
+block main
+    h1 CJIDC Realtime - Admin
+    section
+        h3 Add Score data
+        +CsrfForm("/score")
+            input(type="text" name="grade" placeholder="grade")
+            input(type="text" name="class" placeholder="class")
+            input(type="datetime-local" name="time")
+            select(name="kind")
+                each kind in kinds
+                    option(value=kind) 競技 #{kind}
+            input(type="text" name="point" placeholder="point")
+            input(type="submit" value="submit")
