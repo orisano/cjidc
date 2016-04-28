@@ -1,0 +1,6 @@
+{
+  "name": "cjidc",
+  "description": "realtime scoring application for sport festival in cjidc",
+  "repository": "https://github.com/orisano/cjidc",
+  "image": "heroku/nodejs"
+}
