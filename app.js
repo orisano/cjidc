@@ -13,7 +13,7 @@ const logger = require("morgan");
 const models = require("./models");
 const cnf = require("./config");
 
-server.listen(cnf.port);
+server.listen(process.env.PORT || cnf.port);
 
 passport.use(new Strategy((user, pass, done) => {
     if (cnf.user !== user || cnf.pass !== pass) {
@@ -53,8 +53,8 @@ app.post("/score",
             point: +req.body.point
         };
         models.Event.create(event).then((obj) => {
-            res.send("OK");
             io.emit("event", obj);
+            res.redirect("/admin");;
         });
     }
 );
