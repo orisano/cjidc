@@ -39,7 +39,7 @@ main {
 		}
 		table {
 			border-collapse: separate;
-			width: 90%;
+			width: 100%;
 			margin: 0 auto;
 		}
 				table tr td, table tr th {

@@ -23,12 +23,35 @@ function eventToRow(eve) {
 		var $td = document.createElement("td");
 		if (x == "time") {
 			$td.textContent = getTime(eve[x]);
-		} else {
+		}
+		else {
 			$td.textContent = eve[x];
 		}
 		return $td;
 	})
 	.forEach(function($x){
+		$row.appendChild($x);
+	})
+	return $row;
+}
+
+function scoreToRow(score) {
+	var $row = document.createElement("tr");
+
+	if (typeof(scoreToRow.rank) === "undefined") {
+		scoreToRow.rank = 1;
+	}
+	var $td_rank = document.createElement("td");
+	$td_rank.textContent = scoreToRow.rank++;
+	$row.appendChild($td_rank);
+
+	[0, 1]
+	.map(function (x) {
+		var $td = document.createElement("td");
+		$td.textContent = score[x];
+		return $td;
+	})
+	.forEach(function($x) {
 		$row.appendChild($x);
 	})
 	return $row;
@@ -52,6 +75,20 @@ window.addEventListener("DOMContentLoaded", function(){
 		.forEach(function($row){
 			$eve.appendChild($row);
 		})
+		removeChildAll($score);
+		var score = events.reduce(function(acc, x){
+			acc[x.class] = (acc[x.class] || 0) + x.point;
+			return acc;
+		}, {});
+		var ranking = Object.keys(score).map(function(x){
+			return [score[x], x];
+		}).sort().reverse();
+
+		ranking
+		.map(scoreToRow)
+		.forEach(function ($row) {
+			$score.appendChild($row);
+		});
 	}
 
 	fetch("/event")
