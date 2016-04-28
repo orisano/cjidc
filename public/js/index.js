@@ -14,7 +14,6 @@ function zfill(x, w) {
 
 function noop(x){ return x; }
 function getTime(date) {
-	console.log(date);
 	var time = date.split("T")[1].substr(0, 5);
 	var jp = time.split(":");
 	var h, m;
