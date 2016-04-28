@@ -36,7 +36,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "migrate": "mkdir db && node -e 'require(\"./models\").Event.sync()'",
-    "start": "node app.js"
+    "start": "node app.js",
+    "postinstall": "npm run migrate"
   },
   "author": "orisano",
   "license": "ISC"
