@@ -54,7 +54,7 @@ app.post("/score",
         };
         models.Event.create(event).then((obj) => {
             io.emit("event", obj);
-            res.redirect("/admin");;
+            res.render("result", {message: "Success"});
         });
     }
 );
