@@ -14,12 +14,19 @@
     "pug": "^0.1.0",
     "sequelize": "^3.21.0",
     "socket.io": "^1.4.5",
+    "socket.io-client": "^1.4.5",
     "sqlite3": "^3.1.3"
   },
   "devDependencies": {
     "babel": "^6.5.2",
     "babelify": "^7.2.0",
     "browserify": "^13.0.0",
+    "es6-promise": "^3.1.2",
+    "isomorphic-fetch": "^2.2.1",
+    "react": "^15.0.1",
+    "react-dom": "^15.0.1",
+    "rx": "^4.1.0",
+    "rx-dom": "^7.0.3",
     "watchify": "^3.7.0"
   },
   "scripts": {
