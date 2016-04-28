@@ -35,14 +35,11 @@ function eventToRow(eve) {
 	return $row;
 }
 
-function scoreToRow(score) {
+function scoreToRow(score, idx) {
 	var $row = document.createElement("tr");
 
-	if (typeof(scoreToRow.rank) === "undefined") {
-		scoreToRow.rank = 1;
-	}
 	var $td_rank = document.createElement("td");
-	$td_rank.textContent = scoreToRow.rank++;
+	$td_rank.textContent = String(idx + 1);
 	$row.appendChild($td_rank);
 
 	[1, 0]
