@@ -1,4 +1,6 @@
 # TODO
+* herokuに投げたら死んだのでつらい
+
 * frontendのreact化
 * adminパネルの改善
 * 凍結機能の実装

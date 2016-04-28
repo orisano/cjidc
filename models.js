@@ -10,9 +10,10 @@ const sequelize = new Sequelize("database", null, null, {
 });
 
 const Event = sequelize.define("event", {
-    time: Sequelize.DATE,
-    grade: Sequelize.INTEGER,
-    class: Sequelize.STRING(2),
+    time: {
+    	type: Sequelize.DATE, defaultValue: Sequelize.NOW
+    },
+    class: Sequelize.STRING(16),
     kind: Sequelize.STRING,
     point: Sequelize.INTEGER
 });

@@ -13,11 +13,11 @@ block main
     section
         h3 Add Score data
         +CsrfForm("/score")
-            input(type="text" name="grade" placeholder="grade")
-            input(type="text" name="class" placeholder="class")
-            input(type="datetime-local" name="time")
+            select(name="classes")
+                each cls in classes
+                    option(value=cls) #{cls}
             select(name="kind")
                 each kind in kinds
-                    option(value=kind) 競技 #{kind}
-            input(type="text" name="point" placeholder="point")
+                    option(value=kind) #{kind}
+            input(type="number" name="point" step="5" max=100 min=0 placeholder="point")
             input(type="submit" value="submit")

@@ -38,7 +38,7 @@ app.get("/admin",
     passport.authenticate("basic", {session: false}),
     csrfProtection,
     (req, res) => {
-        res.render("admin", {kinds: ["A", "B", "C"], csrfToken: req.csrfToken()});
+        res.render("admin", {classes: ["1-1", "1-2", "1-3", "1-4", "2-1", "2-2", "2-3", "2-4", "3-ms", "3-ic", "3-mi", "3-br", "4-ms", "4-ic", "4-mi", "4-br", "5-ms", "5-ic", "5-mi", "5-br"], kinds: ["クラス対抗リレー(1年)", "クラス対抗リレー(2年)", "クラス対抗リレー(3年)", "借り物競走", "部対抗リレー", "大綱引き", "カバディ", "学級リレー(4年)", "学級リレー(5年)", "障害物競走"], csrfToken: req.csrfToken()});
     }
 );
 
@@ -48,15 +48,13 @@ app.post("/score",
     csrfProtection,
     (req, res) => {
         const event = {
-            time: req.body.time,
-            grade: +req.body.grade,
-            class: req.body.class,
+            class: req.body.classes,
             kind: req.body.kind,
             point: +req.body.point
         };
-        models.Event.create(event).then(() => {
+        models.Event.create(event).then((obj) => {
             res.send("OK");
-            io.emit("event", event);
+            io.emit("event", obj);
         });
     }
 );
