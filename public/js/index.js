@@ -45,7 +45,7 @@ function scoreToRow(score) {
 	$td_rank.textContent = scoreToRow.rank++;
 	$row.appendChild($td_rank);
 
-	[0, 1]
+	[1, 0]
 	.map(function (x) {
 		var $td = document.createElement("td");
 		$td.textContent = score[x];
