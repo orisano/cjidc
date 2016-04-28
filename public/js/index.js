@@ -14,7 +14,13 @@ function zfill(x, w) {
 
 function noop(x){ return x; }
 function getTime(date) {
-	return date.split("T")[1].substr(0, 5);
+	console.log(date);
+	var time = date.split("T")[1].substr(0, 5);
+	var jp = time.split(":");
+	var h, m;
+	h = parseInt(jp[0]) + 9;
+	m = jp[1];
+	return String(h >= 24 ? h -= 24 : h) + ":" + String(m);
 }
 function eventToRow(eve) {
 	var $row = document.createElement("tr");
